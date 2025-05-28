@@ -7,6 +7,6 @@
 # .gitignore
 .idea/
 *.iml
-out/
+/out/
 target/
 *.class
