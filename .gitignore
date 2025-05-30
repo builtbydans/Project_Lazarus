@@ -1,0 +1,16 @@
+# Java
+*.class
+*.jar
+*.war
+*.iml
+.idea/
+target/
+out/
+
+# Node
+node_modules/
+dist/
+.env
+
+# macOS
+.DS_Store
