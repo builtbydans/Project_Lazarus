@@ -1,5 +1,5 @@
 
-public class Main {
+public class HealthMain {
 
     public static void main(String[] args) {
         HealthStation childrensHospital = new HealthStation();
