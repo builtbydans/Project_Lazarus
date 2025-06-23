@@ -2,12 +2,12 @@
 public class HealthStation {
     private int weighings;
 
-    public int weigh(Person Person) {
+    public int weigh(HeightPerson Person) {
         this.weighings++;
         return Person.getWeight();
     }
 
-    public void feed(Person Person) {
+    public void feed(HeightPerson Person) {
         int currentWeight = Person.getWeight();
         Person.setWeight(currentWeight + 1);
     }
