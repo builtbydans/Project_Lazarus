@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bank Account Simulator</title>
+  <link rel="stylesheet" href="./stylesheet.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app__header">
+      <h1>Bank Account Simulator</h1>
+      <p class="app__tagline">Practice deposits, withdrawals, and logging transactions.</p>
+    </header>
+
+    <!-- Account Summary -->
+    <section class="card card--summary" aria-labelledby="summary-title">
+      <h2 id="summary-title" class="sr-only">Account Summary</h2>
+      <div class="summary">
+        <div class="summary__block">
+          <span class="summary__label">Account</span>
+          <strong id="account-name" class="summary__value">Main</strong>
+        </div>
+        <div class="summary__block">
+          <span class="summary__label">Balance</span>
+          <strong id="balance" class="summary__value" data-balance="0">£0.00</strong>
+        </div>
+        <div class="summary__block">
+          <span class="summary__label">Overdraft Limit</span>
+          <strong id="overdraft-limit" class="summary__value" data-overdraft="0">£0.00</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls -->
+    <section class="card" aria-labelledby="controls-title">
+      <h2 id="controls-title">Controls</h2>
+
+      <form id="tx-form" class="controls" onsubmit="return false">
+        <div class="controls__row">
+          <label for="amount" class="controls__label">Amount</label>
+          <div class="controls__amount">
+            <select id="currency" aria-label="Currency">
+              <option value="GBP" selected>£ GBP</option>
+            </select>
+            <input
+              id="amount"
+              type="number"
+              inputmode="decimal"
+              step="0.01"
+              min="0"
+              placeholder="0.00"
+              aria-describedby="amount-help"
+              required
+            />
+            <span id="help-text"></span>
+          </div>
+        </div>
+
+        <div class="controls__row">
+          <button id="btn-deposit" class="btn btn--primary" data-action="deposit" type="button">Deposit</button>
+          <button id="btn-withdraw" class="btn btn--warn" data-action="withdraw" type="button">Withdraw</button>
+          <button id="btn-reset" class="btn btn--ghost" data-action="reset" type="button">Reset</button>
+        </div>
+
+        <div class="controls__row controls__row--grid">
+          <div class="field">
+            <label for="account-input" class="controls__label">Rename Account</label>
+            <input id="account-input" type="text" placeholder="e.g. Savings" />
+          </div>
+          <div class="field">
+            <label for="overdraft-input" class="controls__label">Set Overdraft</label>
+            <input id="overdraft-input" type="number" inputmode="decimal" step="1" min="0" placeholder="0" />
+          </div>
+          <div class="field field--actions">
+            <button id="btn-apply-settings" class="btn" data-action="apply-settings" type="button">Apply</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Live status/messages -->
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </section>
+
+    <!-- Transactions -->
+    <section class="card" aria-labelledby="tx-title">
+      <div class="card__header">
+        <h2 id="tx-title">Transactions</h2>
+        <div class="card__actions">
+          <button id="btn-clear-history" class="btn btn--ghost" data-action="clear-history" type="button">Clear History</button>
+        </div>
+      </div>
+
+      <ul id="tx-list" class="tx-list" aria-label="Transaction history">
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app__footer">
+      <small>Built for practicing JS fundamentals. No real money here 😄</small>
+    </footer>
+  </main>
+
+  <!-- You’ll attach your JS file here -->
+  <script src="./app.js" type="module"></script>
+</body>
+</html>
