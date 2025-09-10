@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Jimmy's Diner — Order</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__inner">
+        <h1 class="brand">Jimmy’s Diner</h1>
+        <p class="tagline">The best burgers and pizzas in town.</p>
+      </div>
+    </header>
+
+    <main class="page">
+      <!-- Menu -->
+      <section class="card" aria-labelledby="menu-heading">
+        <h2 id="menu-heading" class="section-title">Menu</h2>
+        <ul id="menu-list" class="menu" aria-live="polite">
+          <!-- JS renders items here -->
+        </ul>
+      </section>
+
+      <!-- Order Summary -->
+      <section
+        id="order-section"
+        class="card order hidden"
+        aria-labelledby="order-heading"
+      >
+        <h2 id="order-heading" class="section-title">Your order</h2>
+
+        <div id="order-lines" class="order__lines" aria-live="polite">
+          <!-- JS renders line items here -->
+        </div>
+
+        <div id="order-discount" class="order__row order__row--discount hidden">
+          <span>Bundle discount</span>
+          <span id="discount-amount">-</span>
+        </div>
+
+        <div class="order__row order__row--total">
+          <span>Total price</span>
+          <span id="total-amount">$0</span>
+        </div>
+
+        <button id="btn-complete" class="btn btn--primary">
+          Complete order
+        </button>
+      </section>
+
+      <!-- Confirmation -->
+      <section
+        sty
+        id="confirmation"
+        class="confirm hidden"
+        aria-live="polite"
+        role="status"
+      ></section>
+    </main>
+
+    <!-- Payment Modal (native <dialog>) -->
+    <dialog id="payment-dialog" class="dialog">
+      <form id="payment-form" method="dialog" class="dialog__panel" novalidate>
+        <header class="dialog__header">
+          <h3>Enter card details</h3>
+        </header>
+
+        <div class="field">
+          <label for="name">Name on card</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            autocomplete="cc-name"
+            required
+          />
+          <p class="field__error" id="err-name" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label for="card">Card number</label>
+          <input
+            id="card"
+            name="card"
+            type="text"
+            inputmode="numeric"
+            autocomplete="cc-number"
+            placeholder="•••• •••• •••• ••••"
+            maxlength="19"
+            required
+          />
+          <p class="field__error" id="err-card" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label for="cvv">CVV</label>
+          <input
+            id="cvv"
+            name="cvv"
+            type="password"
+            inputmode="numeric"
+            autocomplete="cc-csc"
+            maxlength="4"
+            required
+          />
+          <p class="field__error" id="err-cvv" aria-live="polite"></p>
+        </div>
+
+        <div class="dialog__actions">
+          <button type="button" id="btn-cancel" class="btn btn--ghost">
+            Cancel
+          </button>
+          <button type="submit" id="btn-pay" class="btn btn--primary">
+            Pay
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
