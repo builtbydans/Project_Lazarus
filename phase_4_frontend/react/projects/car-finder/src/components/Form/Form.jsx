@@ -19,9 +19,15 @@ const Form = () => {
     0
   );
 
+  const buildSubmission = () => ({
+    ...formData,
+    totalPCM,
+  });
+
   const formHandler = (e) => {
     e.preventDefault();
-    console.log({ ...formData }, `Total PCM £${totalPCM}`);
+    const submittedData = buildSubmission();
+    console.log("Submitted:", submittedData);
   };
 
   const updateField = (field) => (val) => {
